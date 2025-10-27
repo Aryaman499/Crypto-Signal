@@ -31,8 +31,8 @@ body { @apply bg-bg-dark text-white antialiased; }
   border: 1px solid rgba(0,255,153,0.08);
 }
 
-/* Responsive */
-.container-max { max-width: 1400px; margin-left:auto; margin-right:auto;}
+/* Responsivness */
+.container-max { max-width: 1420px; margin-left:auto; margin-right:auto; }
 
 /* small decorative sparkline animation */
 @keyframes spark {

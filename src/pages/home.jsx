@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import RecentSignals from '../components/RecentSignals'
 import GrowthSimulator from '../components/GrowthSimulator'
+  
 
 export default function Home(){
   return (
