@@ -9,7 +9,7 @@ export default function Home(){
   return (
     <div className="">
       <Navbar />
-      <main className="container-max mx-auto mt-8 pb-12">
+      <main className="container-max mx-auto">
         <Hero />
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 mt-8 ">
           <div className="lg:col-span-1">

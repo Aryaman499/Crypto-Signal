@@ -1,43 +1,122 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
 
-
-/* Theme */
-:root{
-  --glass-bg: rgba(255,255,255,0.03);
-  --glass-border: rgba(255,255,255,0.06);
-  
+/* ⚡ Holographic Pulse — Neon Pastel + Cyberpunk Theme */
+:root {
+  --bg-dark: #090b1a;
+  --bg-gradient: linear-gradient(180deg, #0d0f22 0%, #171b3a 100%);
+  --text-light: #e2e8f0;
+  --text-muted: #a0aec0;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-cyan: #00eaff;
+  --accent-pink: #ff66c4;
+  --accent-violet: #9b5cff;
+  --accent-lime: #b4ff39;
+  --neon-glow: 0 0 12px rgba(0, 234, 255, 0.6), 0 0 24px rgba(255, 102, 196, 0.3);
 }
 
-body { @apply bg-bg-dark text-white antialiased; }
+body {
+  @apply antialiased;
+  background: var(--bg-gradient);
+  color: var(--text-light);
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* 🪩 Cyber Glass Cards */
 .glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 1.25rem;
+  box-shadow: 0 0 18px rgba(0, 234, 255, 0.05);
+  transition: all 0.35s ease;
+}
+.glass:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 0 28px rgba(255, 102, 196, 0.2);
 }
 
-.text-neon-green{ color: #00ff99; }
-.text-neon-blue{ color: #00d4ff; }
+/* 💫 Accent Texts */
+.text-cyan { color: var(--accent-cyan); }
+.text-pink { color: var(--accent-pink); }
+.text-violet { color: var(--accent-violet); }
+.text-lime { color: var(--accent-lime); }
 
+/* ⚡ Neon Buttons */
 .btn-glow {
-  @apply inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold;
-  background: linear-gradient(90deg, rgba(0,212,255,0.08), rgba(0,255,153,0.08));
-  box-shadow: 0 0 18px rgba(0,255,153,0.06), inset 0 0 6px rgba(0,212,255,0.02);
-  border: 1px solid rgba(0,255,153,0.08);
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-semibold uppercase tracking-wide transition-all duration-300;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-violet));
+  background-size: 200% 200%;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--neon-glow);
+  animation: pulseGradient 6s ease infinite;
+}
+.btn-glow:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 24px rgba(255, 102, 196, 0.6);
 }
 
-/* Responsivness */
-.container-max { max-width: 1420px; margin-left:auto; margin-right:auto; }
-
-/* small decorative sparkline animation */
-@keyframes spark {
-  0% { transform: translateX(-10%); opacity: 0.7; }
-  50% { transform: translateX(0%); opacity: 1; }
-  100% { transform: translateX(10%); opacity: 0.7; }
+/* 🎛 Form Fields */
+input, textarea, select {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.5rem;
+  padding: 0.7rem 1rem;
+  color: var(--text-light);
+  transition: all 0.25s ease;
 }
-.spark-svg { animation: spark 3s ease-in-out infinite; }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0,234,255,0.5);
+}
+
+/* 🧱 Layout */
+.container-max {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* 🌈 Animated Gradient */
+@keyframes pulseGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 🌟 Floating Neon Sparks */
+@keyframes hologlow {
+  0% { transform: translateY(-5%); opacity: 0.8; }
+  50% { transform: translateY(5%); opacity: 1; }
+  100% { transform: translateY(-5%); opacity: 0.8; }
+}
+.spark-svg {
+  animation: hologlow 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px var(--accent-cyan));
+}
+
+/* ⚙️ Info Card */
+.highlight-card {
+  border-left: 4px solid var(--accent-violet);
+  padding-left: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* 🔮 Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255,255,255,0.1),
+    transparent
+  );
+  margin: 1.5rem 0;
+}
