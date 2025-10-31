@@ -17,7 +17,7 @@ export default function GrowthSimulator() {
   const [data] = useState(demo);
 
   return (
-    <div className="relative rounded-2xl p-6 shadow-[0_0_25px_rgba(0,255,255,0.25)] border border-[#7df9ff]/30 bg-[radial-gradient(circle_at_top_left,_#0a0f1f,_#1b0033_80%)] backdrop-blur-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_45px_rgba(255,0,255,0.4)]">
+    <div className="relative rounded-1xl p-6 mb-8 shadow-[0_0_25px_rgba(0,255,255,0.25)] border border-[#7df9ff]/30 bg-[radial-gradient(circle_at_top_left,_#0a0f1f,_#1b0033_80%)] backdrop-blur-xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_45px_rgba(255,0,255,0.4)]">
       {/* Glow overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,0,255,0.15),transparent_60%),radial-gradient(circle_at_80%_80%,rgba(0,255,255,0.15),transparent_60%)] pointer-events-none"></div>
 

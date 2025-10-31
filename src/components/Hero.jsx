@@ -4,7 +4,7 @@ import LivePerformance from "./LivePerformance";
 
 export default function Hero() {
   return (
-    <section className="relative mt-8 bg-[#0c0c12]/90 border border-[#2a2a3b] rounded-2xl p-10 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-xl transition-all duration-300 overflow-hidden">
+    <section className="relative mt-8 bg-[#0c0c12]/90 border border-[#2a2a3b] rounded-1xl p-10 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-xl transition-all duration-300 overflow-hidden">
 
       {/* Neon background aura */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#ff80bf20] via-[#80d0ff15] to-[#a680ff20] blur-3xl opacity-70 animate-pulse-slow" />

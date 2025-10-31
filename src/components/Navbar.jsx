@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Subscribe Button */}
           <button
             onClick={() => setOpen(true)}
-            className="relative px-6 py-2.5 rounded-full font-semibold text-[#0a0f1f] bg-gradient-to-r from-[#00eaff] via-[#d46bff] to-[#ff85ec] shadow-[0_0_20px_rgba(0,255,255,0.5)] hover:shadow-[0_0_40px_rgba(255,0,255,0.7)] hover:scale-105 transition-all duration-300"
+            className="relative px-4 py-2 rounded-smlg font-semibold text-[#0a0f1f] bg-gradient-to-r from-[#00eaff] via-[#d46bff] to-[#ff85ec] shadow-[0_0_20px_rgba(0,255,255,0.5)] hover:shadow-[0_0_40px_rgba(255,0,255,0.7)] hover:scale-105 transition-all duration-300"
           >
             Subscribe
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00eaff]/20 to-[#ff85ec]/20 opacity-0 group-hover:opacity-100 blur-md transition-all duration-300"></span>

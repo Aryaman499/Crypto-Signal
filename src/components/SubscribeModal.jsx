@@ -41,7 +41,7 @@ export default function SubscribeModal({ open, onClose }) {
             className="flex-1 p-3 rounded-lg border border-[#66fcf1]/40 bg-[#1b1b2f]/60 text-[#e0e0ff] placeholder-[#aaaaee]/60 focus:border-[#ff00ff]/60 focus:ring-2 focus:ring-[#66fcf1]/40 transition outline-none"
           />
           <button className="relative px-5 py-3 rounded-lg bg-gradient-to-r from-[#ff00ff] via-[#00ffff] to-[#ffff99] text-black font-semibold shadow-[0_0_15px_rgba(255,0,255,0.5)] hover:shadow-[0_0_25px_rgba(0,255,255,0.7)] hover:scale-105 transition-all duration-200 overflow-hidden">
-            <span className="relative z-10">Subscribe</span>
+            <span className="relative z-8">Subscribe</span>
             <span className="absolute inset-0 bg-gradient-to-r from-[#00ffff]/30 to-[#ff00ff]/30 blur-md animate-pulse-fast"></span>
           </button>
         </div>

@@ -28,7 +28,7 @@ const VerifyModal = ({ open, tx, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-      <div className="bg-[radial-gradient(circle_at_top_left,_#121226,_#1c0138_90%)] p-6 rounded-2xl w-full max-w-md shadow-[0_0_40px_rgba(0,255,255,0.3)] border border-[#7df9ff]/30">
+      <div className="bg-[radial-gradient(circle_at_top_left,_#121226,_#1c0138_90%)] p-6 rounded-1xl w-full max-w-md shadow-[0_0_40px_rgba(0,255,255,0.3)] border border-[#7df9ff]/30">
         <div className="flex items-center space-x-3 mb-4 border-b border-[#7df9ff]/30 pb-3">
           <CheckCircleIcon className="w-6 h-6 text-[#00eaff]" />
           <h3 className="text-xl font-semibold text-[#e8e8ff] tracking-wide">
