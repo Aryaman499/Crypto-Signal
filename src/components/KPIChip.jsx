@@ -2,17 +2,31 @@ import React from "react";
 
 export default function KPIChip({ label, value }) {
   return (
-    <div className="bg-gradient-to-r from-[#0f0c29]/60 via-[#302b63]/60 to-[#24243e]/60 backdrop-blur-xl 
-                    border border-[#8A2BE2]/40 rounded-xl px-4 py-3 min-w-[120px] text-center 
-                    shadow-[0_0_15px_rgba(138,43,226,0.4)] hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] 
-                    transition-all duration-300">
-      <div className="text-[#D1C4E9] text-xs font-medium uppercase tracking-wide drop-shadow-[0_0_5px_#00ffff]">
+    <div
+      className="bg-[#0a0a0a]/80 border border-[#00ff88]/25 rounded-md px-4 py-3 min-w-[120px]
+                 text-center font-['JetBrains_Mono'] text-[#b0ffb0]
+                 shadow-[0_0_10px_rgba(0,255,136,0.05)] hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]
+                 backdrop-blur-sm transition-all duration-300"
+    >
+      {/* Label */}
+      <div className="text-xs uppercase tracking-wider text-[#00ff88]/70">
         {label}
       </div>
-      <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFD700] 
-                      text-xl font-semibold mt-1 animate-pulse">
+
+      {/* Value */}
+      <div
+        className="mt-1 text-lg font-semibold text-[#00ff88]
+                   drop-shadow-[0_0_5px_rgba(0,255,136,0.4)]
+                   tracking-tight select-none"
+      >
         {value}
       </div>
+
+      {/* Optional Subtle Grid Overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05]
+                      bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),
+                           linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)]
+                      bg-[size:20px_20px] rounded-md"></div>
     </div>
   );
 }

@@ -4,32 +4,50 @@ import LivePerformance from "./LivePerformance";
 
 export default function Hero() {
   return (
-    <section className="relative mt-8 bg-[#0c0c12]/90 border border-[#2a2a3b] rounded-1xl p-10 shadow-[0_0_30px_rgba(255,255,255,0.05)] backdrop-blur-xl transition-all duration-300 overflow-hidden">
+    <section
+      className="relative mt-12 bg-[#0b0b0f]/95 border border-[#2c2c34] rounded-2xl 
+                 p-10 shadow-[0_0_40px_rgba(0,255,200,0.05)] backdrop-blur-lg 
+                 transition-all duration-300 overflow-hidden font-['JetBrains_Mono']"
+    >
+      {/* Subtle terminal grid background */}
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#00ff8866_1px,transparent_1px),linear-gradient(to_bottom,#00ff8866_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-      {/* Neon background aura */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#ff80bf20] via-[#80d0ff15] to-[#a680ff20] blur-3xl opacity-70 animate-pulse-slow" />
+      {/* Neon reflection effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#00ff8820] via-[#00ffff15] to-[#00ffaa10] blur-3xl opacity-70 animate-pulse-slow" />
 
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left Section */}
         <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#ff80bf] via-[#80d0ff] to-[#a680ff] drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-            Transparent Crypto{" "}
-            <span className="text-white">Signals</span>
+          <h1
+            className="text-4xl md:text-5xl font-extrabold leading-tight 
+                      bg-clip-text bg-gradient-to-r  
+                      text-[white] "
+          >
+            Crypto Data.  
+            <span className="text-[#00ff88]"> Verified. Transparent.</span>
           </h1>
 
-          <p className="text-[#bfbfd1] mt-5 text-lg max-w-lg leading-relaxed">
-            Verifiable On-Chain. Real-Time. Secure.  
-            Empowering traders with <span className="text-[#80d0ff] font-medium">clarity</span>, <span className="text-[#ff80bf] font-medium">accuracy</span>, and <span className="text-[#a680ff] font-medium">trust</span>.
+          <p className="text-[#a3a3a3] mt-5 text-sm md:text-base max-w-lg leading-relaxed tracking-wide">
+            Precision-engineered crypto insights for traders who think in code.  
+            Every signal is verifiable, every move transparent — built by{" "}
+            <span className="text-[#00ff88] font-semibold">engineers</span> for{" "}
+            <span className="text-[#00ffaa] font-semibold">engineers</span>.
           </p>
 
+          {/* KPI Chips */}
           <div className="flex gap-4 mt-8 flex-wrap">
             <KPIChip label="Signals Today" value="24" />
-            <KPIChip label="Win Rate Last 30D" value="78%" />
-            <KPIChip label="Avg ROI" value="+1.2%" />
+            <KPIChip label="Accuracy" value="92%" />
+            <KPIChip label="Avg ROI" value="+1.7%" />
           </div>
 
-          <button className="mt-8 px-8 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#ff80bf] via-[#80d0ff] to-[#a680ff] hover:shadow-[0_0_25px_rgba(255,128,255,0.4)] hover:scale-105 transition-all duration-300">
-            Explore Live Data
+          {/* Simple hacker-style button */}
+          <button
+            className="mt-10 px-8 py-3 rounded-md font-semibold text-[#0b0b0f] 
+                       bg-[#00ff88] hover:bg-[#00ffaa] hover:shadow-[0_0_25px_#00ff88] 
+                       transition-all duration-300 uppercase tracking-wider"
+          >
+            Explore Live Data ⚡
           </button>
         </div>
 

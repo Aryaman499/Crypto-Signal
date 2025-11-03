@@ -13,45 +13,57 @@ const data = [
 
 export default function LivePerformance() {
   return (
-    <div className="bg-gradient-to-br from-[#0f0c29]/70 via-[#302b63]/70 to-[#24243e]/70 
-                    border border-[#8A2BE2]/40 backdrop-blur-xl rounded-2xl 
-                    p-8 shadow-[0_0_20px_rgba(0,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,0,255,0.5)] 
-                    transition-all duration-300">
-      <div className="text-[#E0E0FF] text-sm mb-2 font-medium tracking-wide drop-shadow-[0_0_4px_#00ffff]">
+    <div
+      className="relative bg-[#0a0a0a]/90 border border-[#00ff88]/20 rounded-md 
+                 p-10 mr-16 font-['JetBrains_Mono'] text-[#b0ffb0] 
+                 shadow-[0_0_20px_rgba(0,255,136,0.05)] 
+                 hover:shadow-[0_0_25px_rgba(0,255,136,0.15)] 
+                 transition-all duration-300 overflow-hidden"
+    >
+      {/* Grid texture overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.05]
+                   bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),
+                        linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)]
+                   bg-[size:20px_20px]"
+      ></div>
+
+      {/* Header */}
+      <div className="relative text-xs uppercase tracking-widest text-[#00ff88]/70 mb-2">
         Live Performance
       </div>
 
-      <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFD700] 
-                      font-semibold text-xl mb-4 animate-pulse">
+      <div className="relative text-[#00ff88] text-xl font-semibold mb-5">
         CUMULATIVE RETURN: +125.7%
       </div>
 
-      <div style={{ height: 180 }}>
+      {/* Chart */}
+      <div className="relative" style={{ height: 180 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <Tooltip
               contentStyle={{
-                background:
-                  "linear-gradient(135deg, rgba(15,12,41,0.9), rgba(48,43,99,0.9))",
-                borderRadius: "10px",
-                border: "1px solid rgba(0,255,255,0.4)",
-                color: "#E0E0FF",
+                background: "rgba(10,10,10,0.9)",
+                border: "1px solid #00ff88",
+                borderRadius: "4px",
+                color: "#b0ffb0",
+                fontFamily: "JetBrains Mono, monospace",
                 fontSize: "12px",
-                boxShadow: "0 0 10px rgba(255,0,255,0.4)",
               }}
+              cursor={{ stroke: "#00ff88", strokeWidth: 1, opacity: 0.2 }}
             />
             <Line
               type="monotone"
               dataKey="y"
-              stroke="url(#neonGradient)"
-              strokeWidth={3}
+              stroke="url(#matrixGradient)"
+              strokeWidth={2}
               dot={false}
+              isAnimationActive={false}
             />
             <defs>
-              <linearGradient id="neonGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#00FFFF" />
-                <stop offset="50%" stopColor="#FF00FF" />
-                <stop offset="100%" stopColor="#FFD700" />
+              <linearGradient id="matrixGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#00ff88" />
+                <stop offset="100%" stopColor="#00ffaa" />
               </linearGradient>
             </defs>
           </LineChart>

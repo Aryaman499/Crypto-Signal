@@ -61,14 +61,11 @@ export default function HistoricalSignals() {
     let data = [...mockData];
     if (filters.startDate && filters.endDate) {
       data = data.filter(
-        (d) =>
-          new Date(d.date) >= filters.startDate && new Date(d.date) <= filters.endDate
+        (d) => new Date(d.date) >= filters.startDate && new Date(d.date) <= filters.endDate
       );
     }
     if (filters.script)
-      data = data.filter((d) =>
-        d.script.toLowerCase().includes(filters.script.toLowerCase())
-      );
+      data = data.filter((d) => d.script.toLowerCase().includes(filters.script.toLowerCase()));
     if (filters.side) data = data.filter((d) => d.side === filters.side);
     if (filters.status) data = data.filter((d) => d.status === filters.status);
     if (filters.minPrice)
@@ -109,14 +106,16 @@ export default function HistoricalSignals() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+    <div className="min-h-screen bg-[#0d0d0d] text-[#e0e0e0] font-['JetBrains_Mono',monospace] relative">
+      {/* Subtle grid + noise background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-10"></div>
+
       <Navbar />
 
-      <div className="p-10">
+      <div className="p-10 relative z-10">
         {/* ---------- FILTER BAR ---------- */}
-        <div className="bg-white/10 backdrop-blur-lg border border-[#00FFFF]/30 rounded-2xl p-5 mb-8 
-                        shadow-[0_0_20px_rgba(0,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,0,255,0.3)] 
-                        transition-all duration-300 flex flex-wrap items-center gap-4">
+        <div className="bg-[#111]/80 border border-[#222] rounded-md p-5 mb-8 flex flex-wrap items-center gap-4 shadow-[0_0_20px_rgba(0,255,153,0.05)]">
           {/* Date Range */}
           <div className="flex items-center gap-2">
             <DatePicker
@@ -126,7 +125,7 @@ export default function HistoricalSignals() {
               startDate={filters.startDate}
               endDate={filters.endDate}
               placeholderText="Start Date"
-              className="bg-transparent border border-[#00FFFF]/40 text-white placeholder-gray-400 p-2 rounded-lg text-sm"
+              className="bg-[#0b0b0b] border border-[#333] text-[#00ff99] placeholder-gray-500 p-2 rounded-sm text-xs"
             />
             <DatePicker
               selected={filters.endDate}
@@ -135,7 +134,7 @@ export default function HistoricalSignals() {
               startDate={filters.startDate}
               endDate={filters.endDate}
               placeholderText="End Date"
-              className="bg-transparent border border-[#00FFFF]/40 text-white placeholder-gray-400 p-2 rounded-lg text-sm"
+              className="bg-[#0b0b0b] border border-[#333] text-[#00ff99] placeholder-gray-500 p-2 rounded-sm text-xs"
             />
           </div>
 
@@ -145,7 +144,7 @@ export default function HistoricalSignals() {
             value={filters.script}
             onChange={(e) => setFilters({ ...filters, script: e.target.value })}
             placeholder="Script Name"
-            className="bg-transparent border border-[#FF00FF]/40 text-white placeholder-gray-400 p-2 rounded-lg text-sm w-40"
+            className="bg-[#0b0b0b] border border-[#333] text-[#e0e0e0] placeholder-gray-600 p-2 rounded-sm text-xs w-40"
           />
 
           {/* Side toggle */}
@@ -153,13 +152,11 @@ export default function HistoricalSignals() {
             {["BUY", "SELL"].map((side) => (
               <button
                 key={side}
-                onClick={() =>
-                  setFilters({ ...filters, side: filters.side === side ? "" : side })
-                }
-                className={`px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-200 ${
+                onClick={() => setFilters({ ...filters, side: filters.side === side ? "" : side })}
+                className={`px-3 py-1 rounded-sm text-xs border border-[#333] ${
                   filters.side === side
-                    ? "bg-gradient-to-r from-[#00FFFF] to-[#FF00FF] text-white"
-                    : "border-[#888]/40 text-gray-300 hover:bg-white/10"
+                    ? "bg-[#00ff99] text-[#0d0d0d]"
+                    : "text-gray-400 hover:bg-[#1a1a1a]"
                 }`}
               >
                 {side}
@@ -169,30 +166,29 @@ export default function HistoricalSignals() {
 
           {/* Status dropdown */}
           <Select
-            className="w-36 text-sm text-black"
+            className="w-36 text-xs text-black"
             placeholder="Status"
             options={[
               { value: "Open", label: "Open" },
               { value: "Closed", label: "Closed" },
             ]}
             value={filters.status ? { value: filters.status, label: filters.status } : null}
-            onChange={(opt) =>
-              setFilters({ ...filters, status: opt ? opt.value : "" })
-            }
+            onChange={(opt) => setFilters({ ...filters, status: opt ? opt.value : "" })}
             isClearable
             styles={{
               control: (base) => ({
                 ...base,
-                backgroundColor: "rgba(255,255,255,0.1)",
-                borderColor: "#00FFFF50",
+                backgroundColor: "#0f0f0f",
+                borderColor: "#333",
                 color: "white",
+                minHeight: "32px",
               }),
-              singleValue: (base) => ({ ...base, color: "white" }),
-              menu: (base) => ({ ...base, backgroundColor: "#1a1a2e" }),
+              singleValue: (base) => ({ ...base, color: "#00ff99" }),
+              menu: (base) => ({ ...base, backgroundColor: "#111" }),
               option: (base, state) => ({
                 ...base,
-                backgroundColor: state.isFocused ? "#302b63" : "transparent",
-                color: "#00FFFF",
+                backgroundColor: state.isFocused ? "#1a1a1a" : "transparent",
+                color: "#00ff99",
               }),
             }}
           />
@@ -203,47 +199,47 @@ export default function HistoricalSignals() {
             value={filters.minPrice}
             onChange={(e) => setFilters({ ...filters, minPrice: e.target.value })}
             placeholder="Min Entry"
-            className="bg-transparent border border-[#FFD700]/40 text-white placeholder-gray-400 p-2 rounded-lg text-sm w-24"
+            className="bg-[#0b0b0b] border border-[#333] text-[#e0e0e0] placeholder-gray-600 p-2 rounded-sm text-xs w-24"
           />
           <input
             type="number"
             value={filters.maxPrice}
             onChange={(e) => setFilters({ ...filters, maxPrice: e.target.value })}
             placeholder="Max Entry"
-            className="bg-transparent border border-[#FFD700]/40 text-white placeholder-gray-400 p-2 rounded-lg text-sm w-24"
+            className="bg-[#0b0b0b] border border-[#333] text-[#e0e0e0] placeholder-gray-600 p-2 rounded-sm text-xs w-24"
           />
 
           {/* Buttons */}
           <button
             onClick={() => setPage(0)}
-            className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#00FFFF] to-[#FF00FF] text-white font-medium hover:scale-105 transition"
+            className="px-3 py-1 rounded-sm bg-[#00ff99] text-[#0d0d0d] font-bold uppercase text-xs hover:bg-[#00cc77]"
           >
             Apply
           </button>
           <button
             onClick={resetFilters}
-            className="px-4 py-2 rounded-lg border border-gray-400 text-gray-300 hover:bg-white/10"
+            className="px-3 py-1 rounded-sm border border-[#333] text-gray-400 hover:bg-[#1a1a1a] text-xs"
           >
             Reset
           </button>
         </div>
 
         {/* ---------- TABLE ---------- */}
-        <div className="bg-white/10 backdrop-blur-md border border-[#FF00FF]/30 rounded-2xl shadow-[0_0_25px_rgba(255,0,255,0.15)] overflow-x-auto">
-          <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
-            <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-[#FF00FF] font-semibold text-lg">
-              Historical Signals
+        <div className="bg-[#111]/80 border border-[#222] rounded-md overflow-x-auto">
+          <div className="flex justify-between items-center px-6 py-4 border-b border-[#222]">
+            <div className="text-[#00ff99] font-semibold text-sm uppercase tracking-widest">
+              {"Historical_Signals"}
             </div>
             <button
               onClick={handleExportCSV}
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#FFD700] to-[#FF00FF] text-black font-medium hover:scale-105 transition-all"
+              className="px-4 py-2 rounded-sm bg-[#00ff99] text-[#0d0d0d] text-xs font-bold hover:bg-[#00cc77]"
             >
               Export CSV
             </button>
           </div>
 
-          <table className="w-full text-sm text-left text-white/80">
-            <thead className="bg-white/5 text-[#FFD700]">
+          <table className="w-full text-xs text-left text-[#ccc]">
+            <thead className="bg-[#0f0f0f] text-[#00ff99] border-b border-[#222] uppercase tracking-wider">
               <tr>
                 {["script", "side", "status", "entry", "exit", "date"].map((col) => (
                   <th
@@ -252,10 +248,9 @@ export default function HistoricalSignals() {
                       setSortField(col);
                       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
                     }}
-                    className="px-4 py-3 cursor-pointer select-none hover:text-[#00FFFF]"
+                    className="px-4 py-3 cursor-pointer select-none"
                   >
-                    {col.toUpperCase()}{" "}
-                    {sortField === col ? (sortOrder === "asc" ? "▲" : "▼") : ""}
+                    {col} {sortField === col ? (sortOrder === "asc" ? "▲" : "▼") : ""}
                   </th>
                 ))}
               </tr>
@@ -264,7 +259,7 @@ export default function HistoricalSignals() {
               {currentItems.map((sig) => (
                 <tr
                   key={sig.id}
-                  className="border-b border-white/10 hover:bg-white/5 transition-all"
+                  className="border-b border-[#222] hover:bg-[#191919] transition-all"
                 >
                   <td className="px-4 py-2">{sig.script}</td>
                   <td className="px-4 py-2">{sig.side}</td>
@@ -283,12 +278,12 @@ export default function HistoricalSignals() {
               pageCount={pageCount}
               onPageChange={({ selected }) => setPage(selected)}
               containerClassName="flex gap-2"
-              pageClassName="px-3 py-1 border border-white/20 rounded-md hover:bg-white/10"
-              activeClassName="bg-gradient-to-r from-[#00FFFF] to-[#FF00FF] text-black border-none"
+              pageClassName="px-3 py-1 border border-[#333] rounded-sm hover:bg-[#1a1a1a]"
+              activeClassName="bg-[#00ff99] text-[#0d0d0d] border-none"
               previousLabel="<"
               nextLabel=">"
-              previousClassName="px-3 py-1 border border-white/20 rounded-md hover:bg-white/10"
-              nextClassName="px-3 py-1 border border-white/20 rounded-md hover:bg-white/10"
+              previousClassName="px-3 py-1 border border-[#333] rounded-sm hover:bg-[#1a1a1a]"
+              nextClassName="px-3 py-1 border border-[#333] rounded-sm hover:bg-[#1a1a1a]"
             />
           </div>
         </div>

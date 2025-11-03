@@ -12,68 +12,55 @@ export default function SubscribeModal({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Holographic Background */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center font-['JetBrains_Mono']">
+      {/* Carbon Matrix Background */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#0f0c29]/90 via-[#302b63]/90 to-[#24243e]/90 backdrop-blur-[10px] animate-pulse-slow"
+        className="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-sm"
         onClick={onClose}
-      ></div>
+      >
+        {/* Subtle noise texture */}
+        <div className="absolute inset-0 opacity-[0.07] bg-[url('https://www.transparenttextures.com/patterns/noise.png')]"></div>
+        {/* Grid lines overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      </div>
 
-      {/* Neon Glass Card */}
-      <div className="relative z-10 w-full max-w-md bg-white/10 border border-[#66fcf1]/40 backdrop-blur-xl rounded-2xl shadow-[0_0_25px_rgba(102,252,241,0.2)] p-6 transition-all duration-300 hover:shadow-[0_0_40px_rgba(102,252,241,0.5)]">
-        {/* Header */}
-        <h3 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#ff00ff] via-[#00ffff] to-[#ffff99] mb-3 tracking-wide">
-          Stay in the Loop ⚡
+      {/* Brutalist Glass Card */}
+      <div className="relative z-10 w-full max-w-md border border-[#00ff88]/20 bg-[#0f0f0f]/80 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(0,255,136,0.05)] hover:shadow-[0_0_40px_rgba(0,255,136,0.1)] transition-all duration-300">
+        {/* Title */}
+        <h3 className="text-[#00ff88] text-xl font-bold uppercase tracking-wider mb-4">
+          SUBSCRIBE / TERMINAL ACCESS
         </h3>
-        <p className="text-sm text-[#d1d1ff]/80 mb-5 leading-relaxed">
-          Subscribe to receive the latest{" "}
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#00ffff] to-[#ff99ff]">
-            CryptoFuse
-          </span>{" "}
-          updates directly into your digital stream.
+        <p className="text-[#b0ffb0]/70 text-sm leading-relaxed mb-6">
+          Gain direct feed from the CryptoFuse mainframe.  
+          Updates delivered — <span className="text-[#00ff88]">raw & encrypted.</span>
         </p>
 
         {/* Input + Button */}
         <div className="flex gap-2">
           <input
             type="email"
-            placeholder="enter your neon id ⚡"
-            className="flex-1 p-3 rounded-lg border border-[#66fcf1]/40 bg-[#1b1b2f]/60 text-[#e0e0ff] placeholder-[#aaaaee]/60 focus:border-[#ff00ff]/60 focus:ring-2 focus:ring-[#66fcf1]/40 transition outline-none"
+            placeholder="enter@cryptofuse.io"
+            className="flex-1 bg-[#000]/60 border border-[#00ff88]/20 text-[#caffca] placeholder-[#00ff88]/40 rounded-md px-3 py-2 focus:outline-none focus:border-[#00ff88]/60 transition"
           />
-          <button className="relative px-5 py-3 rounded-lg bg-gradient-to-r from-[#ff00ff] via-[#00ffff] to-[#ffff99] text-black font-semibold shadow-[0_0_15px_rgba(255,0,255,0.5)] hover:shadow-[0_0_25px_rgba(0,255,255,0.7)] hover:scale-105 transition-all duration-200 overflow-hidden">
-            <span className="relative z-8">Subscribe</span>
-            <span className="absolute inset-0 bg-gradient-to-r from-[#00ffff]/30 to-[#ff00ff]/30 blur-md animate-pulse-fast"></span>
+          <button className="relative px-4 py-2 border border-[#00ff88]/40 text-[#00ff88] rounded-md font-semibold tracking-widest text-xs uppercase hover:bg-[#00ff88]/10 hover:border-[#00ff88]/70 transition-all duration-200 shadow-[0_0_10px_rgba(0,255,136,0.1)]">
+            Deploy
           </button>
         </div>
 
-        {/* Footer Close Button */}
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-4 text-[#66fcf1]/70 hover:text-[#ff00ff] transition duration-200 text-lg"
+          className="absolute top-3 right-4 text-[#00ff88]/70 hover:text-[#b0ffb0] text-lg transition"
           aria-label="Close"
         >
           ✕
         </button>
+
+        {/* Footer line */}
+        <div className="mt-5 border-t border-[#00ff88]/10 pt-2 text-[#b0ffb0]/40 text-[11px] tracking-wider text-right">
+          CryptoFuse ©2025 // matrix.access
+        </div>
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.9; }
-          50% { opacity: 1; }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 6s ease-in-out infinite;
-        }
-
-        @keyframes pulse-fast {
-          0%, 100% { opacity: 0.7; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.1); }
-        }
-        .animate-pulse-fast {
-          animation: pulse-fast 2s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }

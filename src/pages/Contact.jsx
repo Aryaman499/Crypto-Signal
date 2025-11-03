@@ -21,37 +21,40 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#0a0118] via-[#13052b] to-[#21073a] text-white relative overflow-hidden">
-      {/* Neon grid background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,0,255,0.15),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(0,255,255,0.15),transparent_40%)]"></div>
+    <div
+      className="min-h-screen w-full bg-[#0d0d0d] text-[#e0e0e0] relative font-['JetBrains_Mono',monospace] overflow-hidden"
+    >
+      {/* Gridline background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+
+      {/* Noise texture overlay */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-10 mix-blend-overlay"></div>
 
       <Navbar />
 
       <div className="relative px-6 py-16 flex flex-col items-center z-10">
-        <div className="w-full max-w-6xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_25px_rgba(0,255,255,0.1)] rounded-3xl p-10">
+        <div className="w-full max-w-5xl border border-[#333] bg-[#111]/70 backdrop-blur-md rounded-lg p-10 shadow-[0_0_20px_rgba(0,255,0,0.1)]">
           {/* Header */}
-          <h1 className="text-5xl font-extrabold text-center mb-8 bg-gradient-to-r from-[#00fff0] to-[#ff00ff] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] animate-pulse">
-            Contact <span className="text-white">Us</span>
+          <h1 className="text-4xl font-bold text-center mb-4 text-[#00ff99] tracking-tight uppercase">
+            {"< Contact_Us />"}
           </h1>
-          <p className="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
-            Have a question, suggestion, or collaboration idea? Drop us a
-            message — we’d love to hear from you.
+          <p className="text-center text-gray-400 mb-10 text-sm">
+            Need assistance or collaboration? Send your encrypted packet below.
           </p>
 
-          {/* Grid */}
           <div className="grid md:grid-cols-2 gap-10">
             {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="space-y-6 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(0,255,255,0.2)] transition-all"
+              className="space-y-5 border border-[#222] bg-[#0f0f0f]/70 p-6 rounded-md"
             >
               {[
-                { label: "Full Name", name: "name", type: "text", placeholder: "Your name" },
-                { label: "Email Address", name: "email", type: "email", placeholder: "you@example.com" },
-                { label: "Subject", name: "subject", type: "text", placeholder: "What's your query about?" },
+                { label: "Full Name", name: "name", type: "text", placeholder: "Name" },
+                { label: "Email Address", name: "email", type: "email", placeholder: "name@gmail.com" },
+                { label: "Subject", name: "subject", type: "text", placeholder: "Please type the query" },
               ].map((field) => (
                 <div key={field.name}>
-                  <label className="block mb-2 text-sm font-medium text-cyan-300">
+                  <label className="block mb-2 text-xs text-[#00ff99] uppercase tracking-wider">
                     {field.label}
                   </label>
                   <input
@@ -61,13 +64,13 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder={field.placeholder}
-                    className="w-full p-3 rounded-md bg-black/40 text-white border border-cyan-400/30 focus:outline-none focus:ring-2 focus:ring-cyan-400 placeholder-gray-400 transition-all"
+                    className="w-full p-3 bg-[#0b0b0b] text-[#e0e0e0] border border-[#333] rounded-sm focus:outline-none focus:ring-1 focus:ring-[#00ff99] placeholder-gray-600"
                   />
                 </div>
               ))}
 
               <div>
-                <label className="block mb-2 text-sm font-medium text-pink-300">
+                <label className="block mb-2 text-xs text-[#00ff99] uppercase tracking-wider">
                   Message
                 </label>
                 <textarea
@@ -76,53 +79,52 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows="5"
-                  placeholder="Type your message here..."
-                  className="w-full p-3 rounded-md bg-black/40 text-white border border-pink-400/30 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400 resize-none transition-all"
+                  placeholder="Type your message..."
+                  className="w-full p-3 bg-[#0b0b0b] text-[#e0e0e0] border border-[#333] rounded-sm focus:outline-none focus:ring-1 focus:ring-[#00ff99] placeholder-gray-600 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-md font-semibold text-white bg-gradient-to-r from-[#00fff0] to-[#ff00ff] hover:from-[#00cfcf] hover:to-[#ff40ff] shadow-[0_0_15px_rgba(0,255,255,0.4)] hover:shadow-[0_0_25px_rgba(255,0,255,0.5)] transition-all duration-300"
+                className="w-full py-3 text-[#0d0d0d] bg-[#00ff99] font-bold uppercase tracking-wider hover:bg-[#00cc77] transition-all duration-200"
               >
-                Send Message
+                Send Message →
               </button>
             </form>
 
             {/* Contact Info */}
-            <div className="flex flex-col justify-between p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,0,255,0.2)] transition-all">
+            <div className="border border-[#222] bg-[#0f0f0f]/70 p-6 rounded-md flex flex-col justify-between">
               <div>
-                <h2 className="text-2xl font-semibold mb-4 text-cyan-300">
-                  Get in Touch
+                <h2 className="text-lg font-semibold mb-3 text-[#00ff99]">
+                  Contact :
                 </h2>
-                <p className="text-sm text-gray-300 mb-6">
-                  We’re here to assist you with queries about signals,
-                  verification, or collaborations. Our team typically responds
-                  within 24 hours.
+                <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+                  Our system monitors all network queries 24/7. Expect a
+                  response within 24 hours (unless the blockchain lags).
                 </p>
 
-                <div className="space-y-3 text-gray-300">
-                  <p>📍 Gwalior, India</p>
-                  <p>📧 support@cryptofuse.io</p>
-                  <p>🌐 www.cryptofuse.io</p>
+                <div className="space-y-2 text-sm text-gray-400">
+                  <p>📍 /Location: Gwalior, IN</p>
+                  <p>📧 /Email: support@cryptofuse.io</p>
+                  <p>🌐 /Web: www.cryptofuse.io</p>
                 </div>
               </div>
 
               <div className="mt-10">
-                <h3 className="text-lg font-semibold mb-3 text-pink-300">
+                <h3 className="text-sm mb-3 text-[#00ff99] uppercase tracking-wider">
                   Follow Us
                 </h3>
-                <div className="flex gap-5 text-gray-400">
+                <div className="flex gap-4 text-[#777]">
                   {[
-                    { icon: "fab fa-twitter", color: "text-cyan-400" },
-                    { icon: "fab fa-instagram", color: "text-pink-400" },
-                    { icon: "fab fa-linkedin", color: "text-blue-400" },
-                    { icon: "fab fa-telegram", color: "text-purple-400" },
+                    { icon: "fab fa-twitter" },
+                    { icon: "fab fa-instagram" },
+                    { icon: "fab fa-linkedin" },
+                    { icon: "fab fa-telegram" },
                   ].map((social, i) => (
                     <a
                       key={i}
                       href="#"
-                      className={`hover:${social.color} transition-all duration-300 text-xl`}
+                      className="hover:text-[#00ff99] transition-all duration-200 text-lg"
                     >
                       <i className={social.icon}></i>
                     </a>
@@ -133,8 +135,8 @@ export default function Contact() {
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-12 border-t border-white/10 pt-6 text-gray-400 text-sm">
-            © {new Date().getFullYear()} <span className="text-cyan-300">CryptoFuse</span>. All rights reserved.
+          <div className="text-center mt-10 border-t border-[#222] pt-6 text-gray-600 text-xs tracking-wider">
+            © {new Date().getFullYear()} CryptoFuse — Engineered in Code
           </div>
         </div>
       </div>

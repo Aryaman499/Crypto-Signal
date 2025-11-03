@@ -1,122 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap'); 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ⚡ Holographic Pulse — Neon Pastel + Cyberpunk Theme */
+
+
+/* 🧩 CARBON MATRIX — Brutalist Code Aesthetic */
 :root {
-  --bg-dark: #090b1a;
-  --bg-gradient: linear-gradient(180deg, #0d0f22 0%, #171b3a 100%);
-  --text-light: #e2e8f0;
-  --text-muted: #a0aec0;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --accent-cyan: #00eaff;
-  --accent-pink: #ff66c4;
-  --accent-violet: #9b5cff;
-  --accent-lime: #b4ff39;
-  --neon-glow: 0 0 12px rgba(0, 234, 255, 0.6), 0 0 24px rgba(255, 102, 196, 0.3);
+  --bg-dark: #0a0a0a;
+  --bg-gradient: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+  --text-light: #d1d5db;
+  --text-muted: #6b7280;
+  --card-bg: rgba(25, 25, 25, 0.85);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --accent-green: #00ff88;
+  --accent-gray: #333;
+  --accent-blue: #00b8d9;
+  --accent-orange: #ff7a00;
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --noise-opacity: 0.04;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', monospace;
 }
 
+/* 🖥️ Global Layout */
 body {
   @apply antialiased;
   background: var(--bg-gradient);
   color: var(--text-light);
-  font-family: 'Orbitron', 'Inter', sans-serif;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* 🪩 Cyber Glass Cards */
+/* 🧊 Subtle Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 🧮 Grid Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ⚙️ Glass Terminal Cards */
 .glass {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 1.25rem;
-  box-shadow: 0 0 18px rgba(0, 234, 255, 0.05);
-  transition: all 0.35s ease;
+  backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
+  box-shadow: inset 0 0 0.5px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 .glass:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 0 28px rgba(255, 102, 196, 0.2);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.15);
+  transform: translateY(-2px);
 }
 
-/* 💫 Accent Texts */
-.text-cyan { color: var(--accent-cyan); }
-.text-pink { color: var(--accent-pink); }
-.text-violet { color: var(--accent-violet); }
-.text-lime { color: var(--accent-lime); }
+/* 💡 Accent Texts */
+.text-green { color: var(--accent-green); }
+.text-blue { color: var(--accent-blue); }
+.text-orange { color: var(--accent-orange); }
+.text-muted { color: var(--text-muted); }
 
-/* ⚡ Neon Buttons */
-.btn-glow {
-  @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-semibold uppercase tracking-wide transition-all duration-300;
-  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-violet));
-  background-size: 200% 200%;
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: var(--neon-glow);
-  animation: pulseGradient 6s ease infinite;
+/* ⌨️ Brutalist Buttons */
+.btn-matrix {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-md uppercase tracking-wide font-semibold transition-all duration-300;
+  background: var(--accent-gray);
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
 }
-.btn-glow:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 0 24px rgba(255, 102, 196, 0.6);
+.btn-matrix:hover {
+  background: var(--accent-green);
+  color: #000;
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.4);
+  transform: translateY(-2px);
 }
 
-/* 🎛 Form Fields */
+/* 🧾 Form Fields */
 input, textarea, select {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #111;
+  border: 1px solid #2a2a2a;
   border-radius: 0.5rem;
   padding: 0.7rem 1rem;
   color: var(--text-light);
   transition: all 0.25s ease;
+  font-family: var(--font-mono);
 }
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 8px rgba(0,234,255,0.5);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 8px rgba(0,255,136,0.5);
 }
 
-/* 🧱 Layout */
+/* 🔹 Layout Container */
 .container-max {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* 🌈 Animated Gradient */
-@keyframes pulseGradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* 🌟 Floating Neon Sparks */
-@keyframes hologlow {
-  0% { transform: translateY(-5%); opacity: 0.8; }
-  50% { transform: translateY(5%); opacity: 1; }
-  100% { transform: translateY(-5%); opacity: 0.8; }
-}
-.spark-svg {
-  animation: hologlow 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px var(--accent-cyan));
-}
-
-/* ⚙️ Info Card */
-.highlight-card {
-  border-left: 4px solid var(--accent-violet);
-  padding-left: 1rem;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-/* 🔮 Divider */
+/* 📊 Matrix Divider */
 .divider {
   height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgba(255,255,255,0.1),
+    rgba(0,255,136,0.2),
     transparent
   );
   margin: 1.5rem 0;
+}
+
+/* 💻 Code-Style Highlight Card */
+.highlight-card {
+  border-left: 3px solid var(--accent-green);
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 1rem;
+  font-family: var(--font-mono);
+}
+
+/* ⚡ Terminal Cursor Animation */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: var(--accent-green);
+  margin-left: 4px;
+  animation: cursorBlink 1s infinite;
 }

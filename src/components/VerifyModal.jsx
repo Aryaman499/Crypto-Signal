@@ -6,48 +6,54 @@ export default function VerifyModal({ open, onClose, tx }) {
   const explorer = "https://etherscan.io/tx/" + (tx || "");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Neon glass overlay */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center font-mono">
+      {/* Glass + Carbon Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#0f0c29]/80 via-[#302b63]/80 to-[#24243e]/80 
+        className="absolute inset-0 bg-gradient-to-tr from-[#0c0c0c]/90 via-[#1a1a1a]/90 to-[#0f0f0f]/90 
                    backdrop-blur-md"
         onClick={onClose}
       ></div>
 
-      {/* Neon Modal */}
-      <div className="relative z-10 w-full max-w-lg 
-                      bg-gradient-to-br from-[#1a1a2e]/80 to-[#16213e]/80 
-                      border border-[#00FFFF]/40 rounded-2xl 
-                      shadow-[0_0_30px_rgba(0,255,255,0.3)] 
-                      p-6 transition-all duration-300 
-                      hover:shadow-[0_0_40px_rgba(255,0,255,0.5)]">
-        {/* Header */}
-        <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-[#FF00FF] mb-2">
+      {/* Modal */}
+      <div
+        className="relative z-10 w-full max-w-lg 
+                   bg-[#101015]/95 border border-[#00ffff33] 
+                   rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.15)] 
+                   p-6 transition-all duration-300 
+                   hover:shadow-[0_0_45px_rgba(0,255,255,0.3)]"
+      >
+        {/* Title */}
+        <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFD700] mb-2 tracking-wide">
           Verify Transaction 🔍
         </h3>
-        <p className="text-sm text-[#C8C8FF]/80 mb-4">
+
+        <p className="text-sm text-[#c8c8ff]/70 leading-relaxed mb-4">
           This signal has been immutably logged on-chain.  
-          Verify the transaction hash below for authenticity.
+          Verify the transaction hash below for proof of authenticity.
         </p>
 
-        {/* Transaction Hash */}
-        <div className="bg-gradient-to-r from-[#0f0c29]/60 to-[#302b63]/50 
-                        border border-[#8A2BE2]/50 
-                        p-3 rounded-md font-mono text-sm text-[#E0E0FF] 
-                        break-all shadow-inner">
+        {/* TX Hash Box */}
+        <div
+          className="bg-[#0a0a0f]/80 border border-[#00ffff33] rounded-lg 
+                     p-3 font-mono text-sm text-[#e0e0ff] break-all 
+                     shadow-[inset_0_0_10px_rgba(0,255,255,0.2)] 
+                     tracking-tighter"
+        >
           {tx || "No transaction hash provided"}
         </div>
 
+        {/* Divider line */}
+        <div className="mt-5 border-t border-[#00ffff22]" />
+
         {/* Buttons */}
-        <div className="mt-6 flex justify-end gap-3">
+        <div className="mt-5 flex justify-end gap-3">
           <a
             href={explorer}
             target="_blank"
             rel="noreferrer"
-            className="px-4 py-2 rounded-lg font-medium border border-[#00FFFF]/50 
-                       text-[#00FFFF] hover:text-[#FFD700] 
-                       hover:bg-[#00FFFF]/10 
-                       hover:shadow-[0_0_10px_rgba(0,255,255,0.4)] 
+            className="px-4 py-2 rounded-lg border border-[#00ffff44] 
+                       text-[#00ffffcc] hover:text-[#FFD700] 
+                       hover:bg-[#00ffff10] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] 
                        transition-all duration-200"
           >
             Open in Explorer
@@ -55,11 +61,10 @@ export default function VerifyModal({ open, onClose, tx }) {
 
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-lg font-semibold text-white 
+            className="px-5 py-2 rounded-lg font-semibold text-[#0c0c12] 
                        bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFD700] 
-                       hover:shadow-[0_0_20px_rgba(255,0,255,0.6)] 
-                       hover:scale-105 active:scale-95 
-                       transition-all duration-200"
+                       hover:shadow-[0_0_20px_rgba(255,0,255,0.4)] 
+                       hover:scale-105 active:scale-95 transition-all duration-200"
           >
             Close
           </button>
