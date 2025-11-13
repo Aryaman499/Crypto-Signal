@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="w-full max-w-5xl border border-[#333] bg-[#111]/70 backdrop-blur-md rounded-lg p-10 shadow-[0_0_20px_rgba(0,255,0,0.1)]">
           {/* Header */}
           <h1 className="text-4xl font-bold text-center mb-4 text-[#00ff99] tracking-tight uppercase">
-            {"< Contact_Us />"}
+            {" Contact Us "}
           </h1>
           <p className="text-center text-gray-400 mb-10 text-sm">
             Need assistance or collaboration? Send your encrypted packet below.
@@ -104,9 +104,9 @@ export default function Contact() {
                 </p>
 
                 <div className="space-y-2 text-sm text-gray-400">
-                  <p>📍 /Location: Gwalior, IN</p>
-                  <p>📧 /Email: support@cryptofuse.io</p>
-                  <p>🌐 /Web: www.cryptofuse.io</p>
+                  <p>📍 Location: Gwalior, IN</p>
+                  <p>📧 Email: support@cryptofuse.io</p>
+                  <p>🌐 Web: www.cryptofuse.io</p>
                 </div>
               </div>
 
